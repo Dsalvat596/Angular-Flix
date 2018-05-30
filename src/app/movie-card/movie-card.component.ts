@@ -9,13 +9,18 @@ import { Movie } from '../movie';
 })
 export class MovieCardComponent implements OnInit {
   movies = new Array<Movie>(); 
+  selectedMovie: Movie;
 
   constructor(private moviesService: MoviesService) {
     this.movies = moviesService.getMovies();
    }
 
   ngOnInit() {
-    console.log(this.movies[1].title)
+    
   }
 
+  selectMovie(i:number){
+      this.selectedMovie = this.movies[i];
+      this.moviesService.addMyMovies(this.selectedMovie)
+  }
 }
