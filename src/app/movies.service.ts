@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from './movie'
+import { User } from './user';
 
 
 const MOVIES = [
@@ -19,19 +20,23 @@ const MYMOVIES = []
   providedIn: 'root'
 })
 export class MoviesService {
-
+  myUser: User = {budget: 10};
 
   constructor() { }
 
   getMovies(){
     return MOVIES;
   }
-
+  getUser(){
+    return this.myUser
+  }
   addMyMovies(movie: Movie):void{
-    if(!MYMOVIES.includes(movie)){
+    if(!MYMOVIES.includes(movie) && this.myUser.budget >= movie.price){
    MYMOVIES.push(movie);
     console.log(MYMOVIES)
-  } else{alert("You already selected this movie!")}
+    this.myUser.budget -= movie.price
+  } else if(MYMOVIES.includes(movie)) {alert("You already selected this movie, MORON!")}
+  else{alert("You don't have enough money left!")}
   }
 
   getMyMovies(): Movie[]{
@@ -40,6 +45,7 @@ export class MoviesService {
 
   removeFromMyMovies(movie, idx){
     MYMOVIES.splice(idx, 1);
+    this.myUser.budget += movie.price;
     alert("You removed " + movie.title +".  $" + movie.price + ".00 was added back into your account.");
   }
 }

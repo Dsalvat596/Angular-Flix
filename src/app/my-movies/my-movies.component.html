@@ -1,20 +1,27 @@
-<mat-toolbar>
-    <span>AngularFlix</span>
+<div class="toolbar-container">
+  <mat-toolbar>
+    <span class="title-header">AngularFlix</span>
     <span class="fill-remaining-space" color="accent"></span>
-    <form class="filter-year">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Search by Year" value="">
-        </mat-form-field></form>
-    <span class="remove-movie"><i class="fa fa-trash"></i></span>
+    <form class="filter-movie">
+      <mat-form-field class="filter-title">
+        <input matInput placeholder="Search by Title" value="">
+      </mat-form-field>
+      <mat-form-field class="filter-year">
+        <input matInput placeholder="Search by Year" value="">
+      </mat-form-field>
+    </form>
+    <span class="remove-movie">
+      <i class="fa fa-trash"></i>
+    </span>
+    <app-budget class="budget"></app-budget>
   </mat-toolbar>
-
+</div>
 <div class="my-movies-container">
-  
   <h1 class="placeholder-text" *ngIf="myMovies.length === 0">
-    Select your movies!
+    Select movies from below to add to your collection
   </h1>
-  <div class="movies-card" flex="30" *ngFor="let movie of myMovies; let idx = index">      
-      <app-movie-card [movie]="movie" (click)="remove(movie, idx)"></app-movie-card>
-      
-    </div>
+  <div class="movies-card" flex="30" *ngFor="let movie of myMovies; let idx = index">
+    <app-movie-card [movie]="movie" (click)="remove(movie, idx)"></app-movie-card>
+
+  </div>
 </div>
