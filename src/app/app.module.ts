@@ -11,6 +11,9 @@ import { MoviesService } from './movies.service';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MoviesFilterComponent } from './movies-filter/movies-filter.component';
 import { BudgetComponent } from './budget/budget.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MatInputModule } from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { BudgetComponent } from './budget/budget.component';
   imports: [
     BrowserModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AngularFontAwesomeModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

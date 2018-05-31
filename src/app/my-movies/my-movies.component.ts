@@ -8,13 +8,17 @@ import { Movie } from '../movie';
   styleUrls: ['./my-movies.component.scss']
 })
 export class MyMoviesComponent implements OnInit {
-  myMovies: Array<Movie>;
+  myMovies = new Array<Movie>();
 
   constructor(private moviesService: MoviesService) { 
   this.myMovies = moviesService.getMyMovies();
   }
+
   ngOnInit() {
-    console.log('test');
+    
   }
 
+  remove(movie, idx){
+    this.moviesService.removeFromMyMovies(movie, idx);
+  }
 }

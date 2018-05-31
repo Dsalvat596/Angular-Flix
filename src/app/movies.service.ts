@@ -28,11 +28,18 @@ export class MoviesService {
   }
 
   addMyMovies(movie: Movie):void{
+    if(!MYMOVIES.includes(movie)){
    MYMOVIES.push(movie);
-    console.log(MYMOVIES);
+    console.log(MYMOVIES)
+  } else{alert("You already selected this movie!")}
   }
 
-  getMyMovies(){
+  getMyMovies(): Movie[]{
     return MYMOVIES;
+  }
+
+  removeFromMyMovies(movie, idx){
+    MYMOVIES.splice(idx, 1);
+    alert("You removed " + movie.title +".  $" + movie.price + ".00 was added back into your account.");
   }
 }

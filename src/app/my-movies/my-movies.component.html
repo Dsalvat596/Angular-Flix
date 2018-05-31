@@ -1,7 +1,20 @@
+<mat-toolbar>
+    <span>AngularFlix</span>
+    <span class="fill-remaining-space" color="accent"></span>
+    <form class="filter-year">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Search by Year" value="">
+        </mat-form-field></form>
+    <span class="remove-movie"><i class="fa fa-trash"></i></span>
+  </mat-toolbar>
 
 <div class="my-movies-container">
-
-  <h1 class="placeholder-text">
+  
+  <h1 class="placeholder-text" *ngIf="myMovies.length === 0">
     Select your movies!
   </h1>
+  <div class="movies-card" flex="30" *ngFor="let movie of myMovies; let idx = index">      
+      <app-movie-card [movie]="movie" (click)="remove(movie, idx)"></app-movie-card>
+      
+    </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../movie';
 
@@ -8,19 +8,16 @@ import { Movie } from '../movie';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  movies = new Array<Movie>(); 
-  selectedMovie: Movie;
+  @Input() movie = new Array<Movie>(); 
+
 
   constructor(private moviesService: MoviesService) {
-    this.movies = moviesService.getMovies();
+    
    }
 
   ngOnInit() {
     
   }
 
-  selectMovie(i:number){
-      this.selectedMovie = this.movies[i];
-      this.moviesService.addMyMovies(this.selectedMovie)
-  }
+  
 }

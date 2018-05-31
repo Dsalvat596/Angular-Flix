@@ -9,14 +9,18 @@ import { Movie } from '../movie';
 })
 
 export class AllMoviesComponent implements OnInit {
- 
+  movies = new Array<Movie>(); 
+  selectedMovie: Movie;
   
   constructor(private moviesService: MoviesService) { 
-    
+    this.movies = moviesService.getMovies();
   }
 
   ngOnInit() {
   
   }
-
+  selectMovie(i:number){
+    this.selectedMovie = this.movies[i];
+    this.moviesService.addMyMovies(this.selectedMovie)
+  }
 }
