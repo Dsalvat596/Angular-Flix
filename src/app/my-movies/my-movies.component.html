@@ -1,27 +1,21 @@
-<div class="toolbar-container">
-  <mat-toolbar>
-    <span class="title-header">AngularFlix</span>
-    <span class="fill-remaining-space" color="accent"></span>
-    <form class="filter-movie">
-      <mat-form-field class="filter-title">
-        <input matInput placeholder="Search by Title" value="">
-      </mat-form-field>
-      <mat-form-field class="filter-year">
-        <input matInput placeholder="Search by Year" value="">
-      </mat-form-field>
-    </form>
-    <span class="remove-movie">
-      <i class="fa fa-trash"></i>
-    </span>
-    <app-budget class="budget"></app-budget>
-  </mat-toolbar>
-</div>
-<div class="my-movies-container">
-  <h1 class="placeholder-text" *ngIf="myMovies.length === 0">
-    Select movies from below to add to your collection
-  </h1>
-  <div class="movies-card" flex="30" *ngFor="let movie of myMovies; let idx = index">
-    <app-movie-card [movie]="movie" (click)="remove(movie, idx)"></app-movie-card>
-
+ <div class="header">
+ <app-search-bar class="private-search row" (searchChanged)="searchMovie($event)" [showselect]="showselect"></app-search-bar>
+ 
+   <i class="fa fa-trash" *ngIf="privateMovies.length > 0" (click)="allowRemoveMovies()"></i>
+  
+    <app-budget></app-budget>
   </div>
-</div>
+  <div class="text row">
+    <div class="title col-10">
+      <h4 *ngIf="privateMovies.length == 0">{{title}}</h4>
+      <h4 class="budget-state">{{budgetState}}</h4>
+    </div>
+  </div>
+  
+  <ul class="row">
+      <div class="myMovies-flex-container">
+    <app-movie class="col-3" *ngFor="let movie of privateMovies | filter : currentSearchTerm; let i = index" [movie]=movie [deleteMoviesFromPrivate]="deleteMoviesFromPrivate" (clickToRemoveMovie)="removeMovieFromPrivate($event)"></app-movie>
+  </div>
+  </ul>
+
+  

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
-import { Movie } from '../movie';
+import {MoviesService} from '../movies.service';
+import {Movie} from '../movie';
 
 @Component({
   selector: 'app-my-movies',
@@ -8,17 +8,38 @@ import { Movie } from '../movie';
   styleUrls: ['./my-movies.component.scss']
 })
 export class MyMoviesComponent implements OnInit {
-  myMovies = new Array<Movie>();
+  title: string = 'Select movies from below to add to your collection';
+  privateMovies: Movie[];
+  currentSearchTerm: string;
+  deleteMoviesFromPrivate: boolean;
+  showselect:boolean=false;
 
-  constructor(private moviesService: MoviesService) { 
-  this.myMovies = moviesService.getMyMovies();
-  }
+  constructor( private moviesService: MoviesService ) { }
 
   ngOnInit() {
-    
+    this.privateMovies = this.moviesService.getPrivateMovies();
+   
+    console.log(this.privateMovies)
   }
 
-  remove(movie, idx){
-    this.moviesService.removeFromMyMovies(movie, idx);
+  searchMovie(searchTerm: string) {
+    // let foundMovie = this.privateMovies.find((movie) => movie.title.includes(searchTerm != '' && searchTerm));
+    this.currentSearchTerm = searchTerm;
+  }
+
+  get budgetState() {
+    return this.moviesService.getBudgetState();
+  }
+
+  allowRemoveMovies() {
+    this.deleteMoviesFromPrivate = !this.deleteMoviesFromPrivate;
+   
+  }
+
+  removeMovieFromPrivate(movie: Movie) {
+    this.moviesService.removeMovieFromPrivateMovieArray(movie);
+    if(this.moviesService.privateMovies.length === 0){
+      this.deleteMoviesFromPrivate = false;
+    }
   }
 }

@@ -1,27 +1,14 @@
-.movie-card-container{
+.flex-container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 15px;
-    margin-top: 15px;
- }
-
-
-img {
-    width: 100%;
-    height: 200px;
- }
-        
- .movies-card {
-    margin-top: 15px;
-    width: 400px;
- }
-
- .mat-card {
-     padding: 12px;
-     
- }
-
- .select-card:hover {
-     cursor: pointer;
- }
+  }
+  
+  .header {
+    background: linear-gradient(to bottom right, rgb(240, 238, 238), rgb(133, 133, 129));
+    border: thin 1px whitesmoke;
+    box-shadow: 1px, 2px, 4px, 6px, rgba(0, 0, 0, 0.972);
+    padding: 6px;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px;
+  }

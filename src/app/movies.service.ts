@@ -1,51 +1,89 @@
 import { Injectable } from '@angular/core';
-import { Movie } from './movie'
-import { User } from './user';
+import { Movie } from './movie';
 
+const allMovies: Movie[] = [
+  {id: 0, img:"https://i.pinimg.com/originals/b3/0b/6b/b30b6b2ed5b9be4981e33f50791d5522.jpg", title:"2001: A Space Odyssey", price:4, year:1968, descrShort:"Humanity finds a mysterious, obviously artificial object buried beneath the Lunar surface and, with the intelligent computer HAL 9000, sets off on a quest."},
+  {id: 1, img:"https://www.moviehousememories.com/wp-content/uploads/2015/01/terminator-movie-still-1.jpg", title:"The Terminator", year:1984, price:2, descrShort:"A seemingly indestructible android is sent from 2029 to 1984 to assassinate a waitress, whose unborn son will lead humanity in a war against the machines, while a soldier from that war is sent to protect her at all costs."},
+  {id: 2, img:"https://i.ytimg.com/vi/AZnymkpsCH0/maxresdefault.jpg", price:3, title:"The Lord of the Rings: The Two Towers", year:2002, descrShort:"While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron's new ally, Saruman, and his hordes of Isengard."},
+  {id: 3, img:"http://www.bolsamania.com/cine/wp-content/uploads/2016/07/28-1.jpg", title:"Predator", price:3, year:1987, descrShort:"A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior."},
+  {id: 4, img:"https://criticsroundup.com/wp-content/uploads/2014/04/strangers-on-a-train-still2edit-526x295.jpg", title: "Strangers on a Train", year: 1951, price:3, descrShort:"A psychotic socialite confronts a pro tennis star with a theory on how two complete strangers can get away with murder - a theory that he plans to implement."},
+  {id: 5, img:"http://duastorres.com.br/wp-content/uploads/2017/06/Top-Gun-Maverick.jpg", title: "Top Gun", year: 1986, price: 4, descrShort:"As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom."},
+  {id: 6, img:"https://filmgrab.files.wordpress.com/2013/02/295.jpg", title: "Chinatown", year: 1974, price: 5, descrShort:"A private detective hired to expose an adulterer finds himself caught up in a web of deceit, corruption, and murder."},
+  {id: 7, img:"https://taskandpurpose.com/wp-content/uploads/2016/10/Screen-Shot-2016-10-12-at-10.50.20-AM-840x420.png", title: "Joe Dirt", year: 2001, price: 2, descrShort:"After being abandoned by his parents at the Grand Canyon, Joe Dirt tells the story of his journey to find his parents."},
+  {id: 8, img:"http://www.indiewire.com/wp-content/uploads/2017/05/the-thing.jpg?w=780", title: "The Thing", year: 1982, price: 3, descrShort:"A crew in Antarctica finds a neighboring camp destroyed and its crew dead. Whatever killed them is nowhere to be found, unless it's hidden in plain sight."}
+];
 
-const MOVIES = [
-  {id:0,img:"http://static.comicvine.com/uploads/original/10/104544/4068923-tarzan-wallpaper-walt-disneys-tarzan-6248938-1024-768.jpg",title:"Tarzan", price:3, year:1999, descrShort:"The movie is about the life of Tarzan. Tarzan was a small orphan who was raised by an ape named Kala since he was a child. He believed that this was his family, but on an expedition Jane Porter is rescued by Tarzan."},
-  {id:1,img:"http://cdn.collider.com/wp-content/uploads/2016/04/the-lion-king-image.jpg",title:"The Lion King", year:1994,price:2, descrShort:"A young lion Prince is cast out of his pride by his cruel uncle, who claims he killed his father. While the uncle rules with an iron paw, the prince grows up beyond the Savannah, living by a philosophy: No worries for the rest of your days."},
-  {id:2,img:"http://img.lum.dolimg.com/v1/images/characters_beautyandthebeast_belle_852af5fe.jpeg?region=0,0,1536,788&width=1200",price:3,title:"Beauty and the Beast", year:1991, descrShort:"A kickass woman named Belle who does not succumb to social norms gets crap from a bunch of village idiots, chief amongst them a total tool named Gaston. Belle shows everyone how great she is when she turns a beast (not Gaston) into a man. Love."},
-  {id:3,img:"http://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2015/07/sword_in_the_stone_still.jpg",title:"The Sword in the Stone",price:6, year:1963, descrShort:"Arthur (aka Wart) is a young boy who aspires to be a knight's squire. On a hunting trip he falls in on Merlin, a powerful but amnesiac wizard who has plans for Wart beyond mere squiredom."},
-  {id:4,img:"http://www.cgmeetup.net/forums/uploads/gallery/album_1392/med_gallery_646_1392_48130.jpg",title: "Beauty and the Beast", year: 2016,price:3, descrShort:"Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so I would think, given how breath-takingly pretty she is. I mean wow. Rumor has it she'll whip out a wand and turn Gaston into a toad."},
-  {id:5,img:"http://img.lum.dolimg.com/v1/images/characters_beautyandthebeast_belle_852af5fe.jpeg?region=0,0,1536,788&width=1200",price:3,title:"Beauty and the Beast", year:1991, descrShort:"A kickass woman named Belle who does not succumb to social norms gets crap from a bunch of village idiots, chief amongst them a total tool named Gaston. Belle shows everyone how great she is when she turns a beast (not Gaston) into a man. Love."},
-  {id:6,img:"http://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2015/07/sword_in_the_stone_still.jpg",title:"The Sword in the Stone",price:6, year:1963, descrShort:"Arthur (aka Wart) is a young boy who aspires to be a knight's squire. On a hunting trip he falls in on Merlin, a powerful but amnesiac wizard who has plans for Wart beyond mere squiredom."},
-  {id:7,img:"http://www.cgmeetup.net/forums/uploads/gallery/album_1392/med_gallery_646_1392_48130.jpg",title: "Beauty and the Beast", year: 2016,price:3, descrShort:"Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so I would think, given how breath-takingly pretty she is. I mean wow. Rumor has it she'll whip out a wand and turn Gaston into a toad."}
-]
+const privateMovies: Movie[] = [];
 
-const MYMOVIES = []
+let budget: number = 10;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MoviesService {
-  myUser: User = {budget: 10};
+  movies: Movie[] = allMovies;
+  privateMovies: Movie[] = privateMovies;
+  budgetState: string;
 
   constructor() { }
 
-  getMovies(){
-    return MOVIES;
-  }
-  getUser(){
-    return this.myUser
-  }
-  addMyMovies(movie: Movie):void{
-    if(!MYMOVIES.includes(movie) && this.myUser.budget >= movie.price){
-   MYMOVIES.push(movie);
-    console.log(MYMOVIES)
-    this.myUser.budget -= movie.price
-  } else if(MYMOVIES.includes(movie)) {alert("You already selected this movie, MORON!")}
-  else{alert("You don't have enough money left!")}
+  getAllMovies(): Movie[] {
+    return allMovies;
   }
 
-  getMyMovies(): Movie[]{
-    return MYMOVIES;
+  getPrivateMovies(): Movie[] {
+    return privateMovies;
   }
 
-  removeFromMyMovies(movie, idx){
-    MYMOVIES.splice(idx, 1);
-    this.myUser.budget += movie.price;
-    alert("You removed " + movie.title +".  $" + movie.price + ".00 was added back into your account.");
+  getBudget(): number {
+    return budget;
+  }
+
+  getBudgetState(): string {
+    return this.budgetState;
+  }
+
+  addMovieToPrivateArray(movie: Movie){
+    privateMovies.push(movie);
+    console.log(this.privateMovies);
+  }
+
+  reduceFromBudget(price: number) {
+    budget -= price;
+  }
+
+  addToBudget(price: number) {
+    budget += price;
+  }
+
+  isMovieNewToArray(title: string, desc: string) {
+    for (var movie of privateMovies) {
+      if (title == movie.title && desc == movie.descrShort) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  addMovieToPrivateMovies(movie: Movie) {
+    if (budget >= movie.price && this.isMovieNewToArray(movie.title, movie.descrShort)) {
+      this.addMovieToPrivateArray(movie);
+      this.reduceFromBudget(movie.price);
+      this.budgetState = ``;
+    } else if (budget > 0 && budget < movie.price) {
+      this.budgetState = `You don't have enough money, you only have $${budget} left`;
+    } else if (budget >= movie.price && (!this.isMovieNewToArray(movie.title, movie.descrShort))) {
+      this.budgetState = `${movie.title} is already in your collection`;
+    } else {
+      this.budgetState = `You can't purchase ${movie.title}, your budget is empty`;
+    }
+  }
+
+  removeMovieFromPrivateMovieArray(movieToDelete: Movie) {
+    let movieIndex = this.privateMovies.findIndex(m => m.id == movieToDelete.id);
+    this.privateMovies.splice(movieIndex, 1);
+    this.addToBudget(movieToDelete.price)
+    // this.privateMovies = this.privateMovies.filter((movie) => {
+    //   return movie.id !== movieToDelete.id;
+    // });
+    // return this.privateMovies;
   }
 }

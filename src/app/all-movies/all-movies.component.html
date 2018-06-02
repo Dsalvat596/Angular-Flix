@@ -1,11 +1,9 @@
-
-            <!-- <input [(ngModel)]="searchText" placeholder="search text goes here"> -->
-          <div class="movie-card-container">
-              <div class="movies-card" flex="30" *ngFor="let movie of movies">      
-                <app-movie-card [movie]="movie" (click)="selectMovie(movie.id)"></app-movie-card>
-                
-              </div>
-           </div>  
-        
-      
-      
+<div class="header">
+<h4> All Movies: </h4>
+<app-search-bar class="row" (searchChanged)="searchMovie($event)" [showselect]="showselect"></app-search-bar>
+</div>
+<ul class="row">
+    <div class="flex-container" flex="30">
+  <app-movie class="col-3" (clickedMovie)="addMovieToPrivate($event) "*ngFor="let movie of movies | filter : currentSearchTerm; let i = index" [movie]=movie></app-movie>
+  </div>
+</ul>

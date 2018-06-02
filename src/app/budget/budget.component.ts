@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
-import { User } from '../user';
+
 
 @Component({
   selector: 'app-budget',
@@ -8,16 +8,15 @@ import { User } from '../user';
   styleUrls: ['./budget.component.scss']
 })
 export class BudgetComponent implements OnInit {
-  myUser: User
 
-  constructor(private moviesService: MoviesService) {
-    this.myUser = this.moviesService.getUser();
-   }
+  constructor( private moviesService: MoviesService ) { }
 
   ngOnInit() {
-  }
-
- 
 
   }
 
+  get budget() {
+    return this.moviesService.getBudget();
+  }
+
+}
