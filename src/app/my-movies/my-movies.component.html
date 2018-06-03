@@ -14,7 +14,7 @@
   
   <ul class="row">
       <div class="myMovies-flex-container">
-    <app-movie class="col-3" *ngFor="let movie of privateMovies | filter : currentSearchTerm; let i = index" [movie]=movie [deleteMoviesFromPrivate]="deleteMoviesFromPrivate" (clickToRemoveMovie)="removeMovieFromPrivate($event)"></app-movie>
+    <app-movie class="col-3" *ngFor="let movie of privateMovies | filter : currentSearchTerm; let i = index" [movie] = "movie" [deleteMoviesFromPrivate]="deleteMoviesFromPrivate" (clickToRemoveMovie)="removeMovieFromPrivate($event)"></app-movie>
   </div>
   </ul>
 

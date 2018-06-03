@@ -7,6 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     min-height: 300px;
+    justify-content: center;
   }
   
   .fa-trash:hover{
@@ -17,6 +18,7 @@
 
   .fa-trash {
     margin: 15px;
+    font-size: 3ex;
   }
 
   .header {
