@@ -10,7 +10,7 @@
         <p> - {{movie.year}} <i class="fa fa-trash" *ngIf="deleteMoviesFromPrivate == true" (click)="removeMovieFromPrivate(movie)" ></i><span id="remove-label" *ngIf="deleteMoviesFromPrivate == true">Remove</span></p>
       </div>
       <div class="desc">
-        {{movie.descrShort}}
+        {{movie.descrShort}} <span class="credits">Starring {{movie.starring}}.  Directed by {{movie.director}}</span> 
       </div>
       
     </div>
