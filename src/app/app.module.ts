@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
  
+import { HttpClientModule } from '@angular/common/http';
+// import { Subject } from 'rxjs/Subject';
+// import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
@@ -33,7 +37,8 @@ import { FilterPipe } from './filter.pipe';
     AngularFontAwesomeModule,
     MatInputModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
     
   ],
   providers: [MoviesService],

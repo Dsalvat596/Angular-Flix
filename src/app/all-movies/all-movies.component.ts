@@ -14,9 +14,10 @@ export class AllMoviesComponent implements OnInit {
   constructor( private moviesService: MoviesService ) { }
 
   ngOnInit() {
-    this.movies = this.moviesService.getAllMovies();
+    this.moviesService.getAllMovies().subscribe((resp) => {
+           this.movies = resp;
+  });
   }
-
 
   searchMovie(searchTerm: string) {
     // let foundMovie = this.movies.find((movie) => movie.title.includes(searchTerm != '' && searchTerm));

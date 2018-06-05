@@ -1,16 +1,16 @@
 
 
-<li data-id="{{movie.id}}" (click)="movieWasClicked(movie)">
+<li data-id="{{movie._id}}" (click)="movieWasClicked(movie)">
     <div class="movie-data">
       <div class="img">
-        <img src="{{movie.img}}">
+        <img src="{{movie.imgUrl}}">
       </div>
       <div class="movie-title">
         <h4>{{movie.title}}</h4>
         <p> - {{movie.year}} <i class="fa fa-trash" *ngIf="deleteMoviesFromPrivate == true" (click)="removeMovieFromPrivate(movie)" ></i><span id="remove-label" *ngIf="deleteMoviesFromPrivate == true">Remove</span></p>
       </div>
       <div class="desc">
-        {{movie.descrShort}} <span class="credits">Starring {{movie.starring}}.  Directed by {{movie.director}}</span> 
+        {{movie.shortDescription}} <span class="credits">Starring {{movie.starring}}.  Directed by {{movie.director}}</span> 
       </div>
       
     </div>
