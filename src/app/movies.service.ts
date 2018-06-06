@@ -35,6 +35,10 @@ export class MoviesService {
     return this.http.get<Movie[]>(this.apiUrl);
   }
 
+  getFullMovie(id){
+    return this.http.get<Movie>(this.apiUrl+'/' + id);
+  }
+
   // getPrivateMovies(): Movie[] {
   //   return privateMovies;
   // }

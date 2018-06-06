@@ -11,7 +11,9 @@
       </div>
       <div class="desc">
         {{movie.shortDescription}} <span class="credits">Starring {{movie.starring}}.  Directed by {{movie.director}}</span> 
-      </div>
+</div>
+<button class="getfull" [routerLink]="['full-movie', movie._id]">See More Info</button>
+
       
     </div>
   </li>

@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { Subject } from 'rxjs/Subject';
 // import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { MyMoviesComponent } from './my-movies/my-movies.component';
@@ -21,6 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterPipe } from './filter.pipe';
+import { AppRoutingModule } from './/app-routing.module';
+import { FullMovieComponent } from './full-movie/full-movie.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FilterPipe } from './filter.pipe';
     MovieCardComponent,
     BudgetComponent,
     SearchBarComponent,
-    FilterPipe
+    FilterPipe,
+    FullMovieComponent
     
   ],
   imports: [
@@ -40,8 +43,9 @@ import { FilterPipe } from './filter.pipe';
     MatInputModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [MoviesService, UserService],
   bootstrap: [AppComponent]

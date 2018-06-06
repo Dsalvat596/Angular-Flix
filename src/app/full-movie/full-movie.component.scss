@@ -1,0 +1,55 @@
+.fullContainer{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.movie-data {
+  border: 1px solid black;
+  margin: 15px;
+  padding: 5px;
+  max-width: 500px;
+  height: 720px;
+  overflow: hidden;
+  background: whitesmoke;
+  border-radius: 1%;
+  border: black 1px;
+  box-shadow: 1px, 2px, 4px, 6px, rgba(0, 0, 0, 0.972);
+}
+
+
+.img {
+  max-width: 100%;
+}
+
+.img img {
+  width: 100%;
+  height: 250px;
+}
+
+.movie-title h4 {
+  display: inline-block;
+}
+
+.movie-title p {
+  display: inline-block;
+}
+
+.credits {
+  font-weight: bold
+}
+
+.fa-trash {
+  margin-left: 20px;
+  margin-right: 4px;
+}
+
+#remove-label {
+  font-size: 12px;
+}
+
+.fa-trash:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  color: rgba(223, 32, 32, 0.938)
+}
