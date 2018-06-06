@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from './movie';
+import { User } from './user';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +18,9 @@ import { HttpClient } from '@angular/common/http';
 
 const privateMovies: Movie[] = [];
 
-let budget: number = 100;
+let user: User = new User();
+user.budget = 100;
+
 
 @Injectable()
 export class MoviesService {
@@ -32,61 +35,61 @@ export class MoviesService {
     return this.http.get<Movie[]>(this.apiUrl);
   }
 
-  getPrivateMovies(): Movie[] {
-    return privateMovies;
-  }
+  // getPrivateMovies(): Movie[] {
+  //   return privateMovies;
+  // }
 
-  getBudget(): number {
-    return budget;
-  }
+  // getBudget(): number {
+  //   return user.budget;
+  // }
 
-  getBudgetState(): string {
-    return this.budgetState;
-  }
+  // getBudgetState(): string {
+  //   return this.budgetState;
+  // }
 
-  addMovieToPrivateArray(movie: Movie){
-    privateMovies.push(movie);
-    console.log(this.privateMovies);
-  }
+  // addMovieToPrivateArray(movie: Movie){
+  //   privateMovies.push(movie);
+  //   console.log(this.privateMovies);
+  // }
 
-  reduceFromBudget(price: number) {
-    budget -= price;
-  }
+  // reduceFromBudget(price: number) {
+  //   user.budget -= price;
+  // }
 
-  addToBudget(price: number) {
-    budget += price;
-  }
+  // addToBudget(price: number) {
+  //   user.budget += price;
+  // }
 
-  isMovieNewToArray(title: string, desc: string) {
-    for (var movie of privateMovies) {
-      if (title == movie.title && desc == movie.descrShort) {
-        return false;
-      }
-    }
-    return true;
-  }
+  // isMovieNewToArray(title: string, desc: string) {
+  //   for (var movie of privateMovies) {
+  //     if (title == movie.title && desc == movie.shortDescription) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
 
-  addMovieToPrivateMovies(movie: Movie) {
-    if (budget >= movie.price && this.isMovieNewToArray(movie.title, movie.descrShort)) {
-      this.addMovieToPrivateArray(movie);
-      this.reduceFromBudget(movie.price);
-      this.budgetState = ``;
-    } else if (budget > 0 && budget < movie.price) {
-      this.budgetState = `You don't have enough money, you only have $${budget} left`;
-    } else if (budget >= movie.price && (!this.isMovieNewToArray(movie.title, movie.descrShort))) {
-      this.budgetState = `${movie.title} is already in your collection`;
-    } else {
-      this.budgetState = `You can't purchase ${movie.title}, your budget is empty`;
-    }
-  }
+  // addMovieToPrivateMovies(movie: Movie) {
+  //   if (user.budget >= movie.price && this.isMovieNewToArray(movie.title, movie.shortDescription)) {
+  //     this.addMovieToPrivateArray(movie);
+  //     this.reduceFromBudget(movie.price);
+  //     this.budgetState = ``;
+  //   } else if (user.budget > 0 && user.budget < movie.price) {
+  //     this.budgetState = `You don't have enough money, you only have $${user.budget} left`;
+  //   } else if (user.budget >= movie.price && (!this.isMovieNewToArray(movie.title, movie.shortDescription))) {
+  //     this.budgetState = `${movie.title} is already in your collection`;
+  //   } else {
+  //     this.budgetState = `You can't purchase ${movie.title}, your budget is empty`;
+  //   }
+  // }
 
-  removeMovieFromPrivateMovieArray(movieToDelete: Movie) {
-    let movieIndex = this.privateMovies.findIndex(m => m.id == movieToDelete.id);
-    this.privateMovies.splice(movieIndex, 1);
-    this.addToBudget(movieToDelete.price)
-    // this.privateMovies = this.privateMovies.filter((movie) => {
-    //   return movie.id !== movieToDelete.id;
-    // });
-    // return this.privateMovies;
-  }
+  // removeMovieFromPrivateMovieArray(movieToDelete: Movie) {
+  //   let movieIndex = this.privateMovies.findIndex(m => m._id == movieToDelete._id);
+  //   this.privateMovies.splice(movieIndex, 1);
+  //   this.addToBudget(movieToDelete.price)
+  //   // this.privateMovies = this.privateMovies.filter((movie) => {
+  //   //   return movie.id !== movieToDelete.id;
+  //   // });
+  //   // return this.privateMovies;
+  // }
 }

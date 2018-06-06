@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { MyMoviesComponent } from './my-movies/my-movies.component';
 import { MoviesService } from './movies.service';
+import { UserService } from './user.service';
+
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { BudgetComponent } from './budget/budget.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -41,7 +43,7 @@ import { FilterPipe } from './filter.pipe';
     HttpClientModule
     
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
