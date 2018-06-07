@@ -9,7 +9,7 @@
   margin: 15px;
   padding: 5px;
   max-width: 500px;
-  height: 720px;
+  min-height: 500px;
   overflow: hidden;
   background: whitesmoke;
   border-radius: 1%;
@@ -52,4 +52,8 @@
   cursor: pointer;
   transform: scale(1.2);
   color: rgba(223, 32, 32, 0.938)
+}
+
+button{
+  margin-right: 7px;
 }

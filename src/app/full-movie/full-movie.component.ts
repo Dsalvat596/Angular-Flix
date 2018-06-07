@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MoviesService} from '../movies.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-full-movie',
@@ -11,7 +12,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class FullMovieComponent implements OnInit {
   fullMovie: Movie = new Movie();
 
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) { }
+  constructor(private moviesService: MoviesService, private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,4 +24,8 @@ export class FullMovieComponent implements OnInit {
     });
   }
 
+
+  purchaseMovie(movie: Movie){
+      this.userService.addMovieToPrivateMovies(movie);
+  }
 }
