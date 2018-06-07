@@ -23,6 +23,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FilterPipe } from './filter.pipe';
 import { AppRoutingModule } from './/app-routing.module';
 import { FullMovieComponent } from './full-movie/full-movie.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FullMovieComponent } from './full-movie/full-movie.component';
     BudgetComponent,
     SearchBarComponent,
     FilterPipe,
-    FullMovieComponent
+    FullMovieComponent,
+    HomepageComponent
     
   ],
   imports: [

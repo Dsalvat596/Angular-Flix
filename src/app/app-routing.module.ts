@@ -5,10 +5,11 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { AllMoviesComponent} from './all-movies/all-movies.component';
 import { MyMoviesComponent } from './my-movies/my-movies.component';
 import { FullMovieComponent } from './full-movie/full-movie.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [{
   path: '',
-  component: AllMoviesComponent
+  component: HomepageComponent
 }, {
   path: 'full-movie/:id',
   component: FullMovieComponent
