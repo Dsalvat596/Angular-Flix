@@ -7,6 +7,17 @@ export class Movie {
     public shortDescription? : string;
     public fullDescription?: string;
     public director?: string;
+    public reviews?: Array<Reviews>;
     
     constructor() {}
 }
+
+            export class Reviews {
+                public _id?: string;
+                public name: string;
+                public text: string;
+                public rating: number;
+                public date: Date;
+
+                constructor() {}
+            }

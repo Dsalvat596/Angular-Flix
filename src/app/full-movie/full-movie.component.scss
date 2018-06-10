@@ -56,6 +56,10 @@
   font-size: 12px;
 }
 
+.fullbuttons {
+  margin-top: 8px;
+}
+
 .fa-trash:hover {
   cursor: pointer;
   transform: scale(1.2);
@@ -63,5 +67,7 @@
 }
 
 button{
+  padding: 5px;
   margin-right: 7px;
 }
+

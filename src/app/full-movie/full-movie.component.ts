@@ -11,6 +11,7 @@ import { UserService } from '../user.service';
 })
 export class FullMovieComponent implements OnInit {
   fullMovie: Movie = new Movie();
+  fullMovieId;
 
   constructor(private moviesService: MoviesService, private userService: UserService, private route: ActivatedRoute) { }
 
@@ -27,5 +28,9 @@ export class FullMovieComponent implements OnInit {
 
   purchaseMovie(movie: Movie){
       this.userService.addMovieToPrivateMovies(movie);
+  }
+
+  getReviewDate(){
+  
   }
 }

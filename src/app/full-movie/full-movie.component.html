@@ -18,13 +18,17 @@
  Directed by {{fullMovie.director}}</span>
 
 </div>
+<div class="fullbuttons">
 <button routerLink="/">Home</button>
 <button (click)="purchaseMovie(fullMovie)"routerLink="/">Purchase</button>
+</div>
 <h3>USER REVIEWS</h3>
  <ul *ngFor="let review of fullMovie.reviews">
   <li>Reviewed by: {{review.name}}</li>
   <li>Rating: {{review.rating}}</li>
   <li>{{review.text}}</li>
+ <li>Posted on: {{review._id}}</li>
+
   <hr>
 
 </ul> 
